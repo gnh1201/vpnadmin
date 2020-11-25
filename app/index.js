@@ -107,8 +107,63 @@ var OldBrowser = (function(exports) {
 	return exports;
 })({});
 
+var CookieObject = function() {
+	this.setCookie = function(key, value, expiredays) {
+		var todayDate = new Date();
+		todayDate.setDate(todayDate.getDate() + expiredays);
+		document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+	};
+
+	this.getCookie = function(key) {
+		var result = null;
+		var cookie = document.cookie.split(';');
+		cookie.some(function (item) {
+			item = item.replace(' ', '');
+			var dic = item.split('=');
+			if (key === dic[0]) {
+				result = dic[1];
+				return true;
+			}
+		});
+		return result;
+	};
+};
+
+var COOKIE = new CookieObject();
+
+var apiUrl = "http://211.238.32.1";
+var token = COOKIE.getCookie("token");
+var userId = COOKIE.getCookie("userid");
+
 OldBrowser.start(function() {
-	$.get("app/login.html", function(res) {
-		OldBrowser.setContent(res);
-	});
+	if (!!token) {
+		alert("success: " + token);
+	} else {
+		$.get("app/login.html", function(res) {
+			OldBrowser.setContent(res);
+
+			document.getElementById("loginform").onsubmit = function(ev) {
+				ev.preventDefault();
+			};
+			
+			document.getElementById("btn_submit").onclick = function() {
+				var credential = {
+					"email": document.getElementById("txt_email").value,
+					"password": document.getElementById("txt_password").value
+				};
+				
+				var onSuccess = function(res) {
+					if ("error" in res) {
+						console.error(res.error.message);
+					} else if ("data" in res) {
+						COOKIE.setCookie("token", res.data.token, 30);
+						COOKIE.setCookie("userid", res.data.user.id, 30);
+						OldBrowser.reload();
+					}
+				};
+
+				$.post(apiUrl + "/netsolid/auth/authenticate", credential, onSuccess);
+			};
+		});
+	}
 });
