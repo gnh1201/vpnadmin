@@ -137,7 +137,7 @@ var userId = COOKIE.getCookie("userid");
 
 var getUsers = function() {
 	
-});
+};
 
 OldBrowser.start(function() {
 	if (!!token) {
