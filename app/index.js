@@ -152,7 +152,7 @@ var getAccounts = function() {
 					+ " Memo: " + res.data[i].meme
 				);
 				entry.appendTo("#listview");
-			}
+			});
         }
 
         template.css("display", "none");
