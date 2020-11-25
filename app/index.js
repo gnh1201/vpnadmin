@@ -157,12 +157,18 @@ var getAccounts = function() {
 
 	$.get("app/accounts.html", function(res) {
 		OldBrowser.setContent(res);
-		$.get(apiUrl + "/netsolid/items/accounts", onSucces);
+		$.get(apiUrl + "/netsolid/items/accounts", onSuccess);
 	});
 };
 
 OldBrowser.start(function() {
 	if (!!token) {
+		$.ajaxSetup({
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader("Authorization", "Bearer " + token);
+			}
+		});
+		
 		getAccounts();
 	} else {
 		$.get("app/login.html", function(res) {
