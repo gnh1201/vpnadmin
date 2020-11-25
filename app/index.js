@@ -138,6 +138,8 @@ var userId = COOKIE.getCookie("userid");
 var getAccounts = function() {
 	var onSuccess = function(res) {
 		var template = $("#listview .template");
+		
+		console.log(JSON.stringify(res));
 
         for (var i = 0; i < res.data.length; i++) {
 			var entry = template.clone();
