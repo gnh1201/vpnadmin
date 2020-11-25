@@ -135,16 +135,35 @@ var apiUrl = "http://211.238.32.1";
 var token = COOKIE.getCookie("token");
 var userId = COOKIE.getCookie("userid");
 
-var getUsers = function() {
-	
+var getAccounts = function() {
+	var onSuccess = function(res) {
+		var template = $("#listview .template");
+
+        for (var i = 0; i < res.data.length; i++) {
+			var entry = template.clone();
+			entry.find("span.star").text(res.data[i].expired_on);
+			entry.find("a.title").text(res.data[i].user);
+			entry.find("div.description").text(
+				"Amount: " + res.data[i].amount + "," +
+				+ " Service Qty: " + res.data[i].service_qty + "," +
+				+ " Service Type: " + res.data[i].service_qty + "," +
+				+ " Memo: " + res.data[i].meme
+			);
+			entry.appendTo("#listview");
+        }
+
+        template.css("display", "none");
+	};
+
+	$.get("app/accounts.html", function(res) {
+		OldBrowser.setContent(res);
+		$.get(apiUrl + "/netsolid/items/accounts", onSucces);
+	});
 };
 
 OldBrowser.start(function() {
 	if (!!token) {
-		$.get("app/users.html", function(res) {
-			OldBrowser.setContent(res);
-			getUsers();
-		});
+		getAccounts();
 	} else {
 		$.get("app/login.html", function(res) {
 			OldBrowser.setContent(res);
