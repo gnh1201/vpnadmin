@@ -141,16 +141,18 @@ var getAccounts = function() {
 
         for (var i = 0; i < res.data.length; i++) {
 			var entry = template.clone();
-			alert(JSON.stringify(res.data[i]));
-			entry.find("span.star").text(res.data[i].expired_on);
-			entry.find("a.title").text(res.data[i].user);
-			entry.find("div.description").text(
-				"Amount: " + res.data[i].amount + "," +
-				+ " Service Qty: " + res.data[i].service_qty + "," +
-				+ " Service Type: " + res.data[i].service_qty + "," +
-				+ " Memo: " + res.data[i].meme
-			);
-			entry.appendTo("#listview");
+			
+			$.get(apiUrl + "/netsolid/users/" + res.data[i].user, function(res2) {
+				entry.find("span.star").text(res.data[i].expired_on);
+				entry.find("a.title").text(res2.data[i].last_name + res2.data[i].first_name + ' (' + res2.data[i].email + ')');
+				entry.find("div.description").text(
+					"Amount: " + res.data[i].amount + "," +
+					+ " Service Qty: " + res.data[i].service_qty + "," +
+					+ " Service Type: " + res.data[i].service_qty + "," +
+					+ " Memo: " + res.data[i].meme
+				);
+				entry.appendTo("#listview");
+			}
         }
 
         template.css("display", "none");
