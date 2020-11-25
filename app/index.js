@@ -135,9 +135,16 @@ var apiUrl = "http://211.238.32.1";
 var token = COOKIE.getCookie("token");
 var userId = COOKIE.getCookie("userid");
 
+var getUsers = function() {
+	
+});
+
 OldBrowser.start(function() {
 	if (!!token) {
-		alert("success: " + token);
+		$.get("app/users.html", function(res) {
+			OldBrowser.setContent(res);
+			getUsers();
+		});
 	} else {
 		$.get("app/login.html", function(res) {
 			OldBrowser.setContent(res);
@@ -145,7 +152,7 @@ OldBrowser.start(function() {
 			document.getElementById("loginform").onsubmit = function(ev) {
 				ev.preventDefault();
 			};
-			
+
 			document.getElementById("btn_submit").onclick = function() {
 				var credential = {
 					"email": document.getElementById("txt_email").value,
