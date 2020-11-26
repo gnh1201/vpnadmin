@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" media="all"  href="assets/css/cascade/production/build-full.min.css" />
+        <link rel="stylesheet" type="text/css" media="all"  href="assets/css/site.css" />
+        <!--[if lt IE 8]><link rel="stylesheet" href="assets/css/cascade/production/icons-ie7.min.css"><![endif]-->
+        <!--[if lt IE 9]><script src="assets/js/shim/iehtmlshiv.js"></script><![endif]-->
+        <title>servers</title>
+        <meta name="description" content="Professional Frontend framework that makes building websites easier than ever.">
+        <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="assets/js/admin/config.js"></script>
+        <script src="assets/js/admin/servers.js"></script>
+        
+        <style type="text/css">
+            .powered-by {
+                background:url('assets/img/cascade icons/powered-by-black.png');
+            }
+
+            .site-center {
+                background:#2d3538;
+            }
+
+            .site-footer li,.site-footer a {
+                color:#fff;
+                border-color:#fff;
+            }
+
+            .site-footer .site-center {
+                background:#2d3538;
+            }
+
+            .site-footer a:hover {
+                color:#3981a7;
+            }
+
+            .site-center .site-body {
+                margin:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="site-center">
+            <div class="site-header">
+                <div class="col width-fit mobile-width-fit">
+                    <div class="cell">
+                        <a href="#" class="logo"></a>
+                    </div>
+                </div>
+                <div class="col width-fill mobile-width-fill">
+                    <div class="cell">
+                        <ul class="col nav">
+                            <li class="active"><a href="#">관리</a></li>
+                            <li><a href="#">게시판</a></li>
+                            <li><a href="#">-</a></li>
+                            <li><a href="#">-</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="site-body">
+                <div class="cell">
+                    <div class="col">
+                        <div class="cell">
+                            <div class="page-header">
+                                <h1>vpn Admin</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col width-1of4">
+                        <div class="cell menu">
+                            <span class="tiny">Test test</span>
+                            <ul class="left nav links">
+                                <li class="active"><a href="servers.html">서버 목록</a></li>
+                                <li><a href="ips.html">IP 목록</a></li>
+                                <li><a href="#">사용자</a></li>
+                                <li><a href="#">정산</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col width-fill">
+                        <div class="col">
+                            <!-- <div class="cell"> -->
+                                <div class="template-header">
+                                    <h2>서버목록</h2>
+                                </div>
+                                <div class="col">
+                                    <div class="cell">
+                                        <div class="panel datasheet">
+                                            <div class="col">
+                                                <div class="panel cell">
+                                                    <div class="header" >server list</div>
+                                                    <div id="article"></div>
+                                                     
+                                                </div> 
+                                                    
+                                                   
+                                                    <div class="cell pagination">
+                                                        <ul class="nav">
+                                                            <li><a href="#">Prev</a></li>
+                                                            <li><a href="#">1</a></li>
+                                                            <li><a href="#">2</a></li>
+                                                            <li><a href="#">3</a></li>
+                                                            <li><a href="#">Next</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>
+                                </div>
+                               </div>
+                        </div>
+                        <div class="col">
+                            <div class="cell">
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="cell panel">
+                            <div class="header">
+                                Form to fill in
+                            </div>
+                            <div class="body">
+                                <div class="cell">
+                                    <form action="#" method="post">
+                                        <div class="col">
+                                            <div class="col width-1of4">
+                                                <div class="cell">
+                                                    <label for="firstname">iprange<span class="color-red"> *</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col width-fill">
+                                                <div class="cell">
+                                                    <input type="text" id="iprange" placeholder="대역" data-required="true" data-error-message="First name is required" class="text parsley-validated">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="col width-1of4">
+                                                <div class="cell">
+                                                    <label for="lastname">name<span class="color-red"> *</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col width-fill">
+                                                <div class="cell">
+                                                    <input type="text" id="name" placeholder="name" data-required="true" data-error-message="Last name is required" class="text parsley-validated">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="col width-1of4">
+                                            </div>
+                                            <div class="col width-fill">
+                                                <div class="cell">
+                                                    <button class="button" type="button" onclick="return addServer()">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="footer">
+                                Footer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="site-footer">
+                <div class="site-center">
+                    <div class="col width-fit">
+                        <div class="cell">
+                            <a href="#" class="powered-by"></a>
+                        </div>
+                    </div>
+                    <div class="col width-fill">
+                        <div class="cell pipes">
+                            <ul class="nav">
+                                <li id="active"><a href="#">Item one</a></li>
+                                <li><a href="#">Item two</a></li>
+                                <li><a href="#">Item three</a></li>
+                                <li><a href="#">Item four</a></li>
+                                <li><a href="#">Item five</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>
